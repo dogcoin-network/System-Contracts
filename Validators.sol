@@ -219,6 +219,10 @@ contract Validators is Params {
             // add staker to validator's record list
             staked[staker][validator].index = valInfo.stakers.length;
             valInfo.stakers.push(staker);
+            if(lastRewardTime[validator] == 0)
+            {
+                lastRewardTime[validator] = block.timestamp;
+            }
             stakeTime[staker][validator] = lastRewardTime[validator];
         }
         else
